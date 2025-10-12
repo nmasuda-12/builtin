@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 23:13:50 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/12 23:33:35 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/13 00:56:19 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	c_check(char **check);
 //-----utils---------
 int		ft_strncmp(char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *str);
-int		ft_atoi(char *st);
+bool	ft_atoi(char *st);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 
 #endif
