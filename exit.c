@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:43:46 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/12 23:41:48 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/12 23:44:16 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,11 @@ void	c_exit(char **line)
 /*
 atoiの中身を「errorかどうかをboolでチェックして、数字に直したやつは引数に入れる」ようにする。
 マイナスを対応させるようにして整理する
+
+nmasuda@c5r1s6:~$ exit 1 2 3
+exit
+bash: exit: too many arguments
+
+を作る
+
 */
