@@ -6,47 +6,49 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:39:12 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/12 17:39:20 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/12 23:38:48 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtin.h"
 
-static bool	ft_overflow(long res)
+static bool	ft_overflow(long long res, int neg, char *st)
 {
-	int	cnt;
-
-	cnt = 0;
-	while (res > 9)
+	if (neg == 0)
 	{
-		res = res / 10;
-		cnt++;
+		if ((LLONG_MAX / 10 < res) || (LLONG_MAX / 10 == res && 7 < *st - 0x30))
+			return (1);
 	}
-	if (cnt > 10)
-		return (false);
-	if (cnt == 9)
-		if (res > 7)
-			return (false);
-	return (true);
+	else
+	{
+		if ((LLONG_MAX + 1 / 10 < res) || (LLONG_MAX + 1 / 10 == res && 8 < *st
+				- 0x30))
+			return (1);
+	}
+	return (0);
 }
 
-int	ft_atoi(char *st)
+bool	ft_atoi(char *st, long long *res)
 {
-	long	res;
+	int			neg;
 
-	res = 0;
-	if (*st == '0')
+	while (*st == '0')
 		st++;
-	while ('0' <= *st && *st <= '9' || *st == '+')
+	if (*st == '+')
+		st++;
+	if (*st == '-')
 	{
-		if (*st == '+')
-			st++;
-		res = res * 10 + (*st - '0');
+		neg = 1;
 		st++;
 	}
-	if (!('0' <= *st && *st <= '9' || *st == '+' || *st == '\0'))
-		return (ERROR);
-	if (ft_overflow(res) == false)
-		return (ERROR);
+	while ('0' <= *st && *st <= '9')
+	{
+		if (ft_overflow(res, st,neg) == false)
+			return (NULL);
+		// res = res * 10 + (*st - '0');
+		// st++;
+	}
+	if (!('0' <= *st && *st <= '9' || *st == '\0'))
+		return (NULL);
 	return (res);
 }

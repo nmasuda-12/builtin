@@ -7,6 +7,7 @@ MAIN_SRCS = echo.c \
 	   		pwd.c \
 	   		env.c \
 			unset.c \
+			exit.c \
 	   		main.c
 
 UTIL_SRCS = utils/ft_atoi.c \

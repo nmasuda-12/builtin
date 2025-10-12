@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtin.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/12 23:13:50 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/12 23:33:35 by nmasuda          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef _BUILTIN_H_
 # define _BUILTIN_H_
 
@@ -10,6 +22,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <limits.h>
 
 //-----main---------
 void	built_in_check(char **line, char **ev);
@@ -19,6 +32,7 @@ void	c_echo(char **line);
 void	c_pwd(char **line);
 void	c_env(char **line, char **ev);
 char	**c_unset(char **line, char **ev);
+void	c_exit(char **line);
 
 //-----仮置系--------
 void	error(char *mess, char **line);
