@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/12 17:46:38 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/12 18:54:24 by nmasuda          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "builtin.h"
 
-void	bild_in_check(char **line, char **ev)
+void	built_in_check(char **line, char **ev)
 {
-	// char	**res;
+	char	**res;
 
-	// res = NULL;
+	res = NULL;
 	if (!ft_strncmp(line[CMD], "echo", 5))
 		c_echo(line);
 	else if (!ft_strncmp(line[CMD], "pwd", 4))
@@ -15,8 +27,11 @@ void	bild_in_check(char **line, char **ev)
 	// 	c_cd(line);
 	// else if (!ft_strncmp(line[CMD], "exit", 5))
 	// 	c_exit(line);
-	// else if (!ft_strncmp(line[CMD], "unset", 6))
-	// 	res = c_unset(line, ev);
+	else if (!ft_strncmp(line[CMD], "unset", 6))
+	{
+		res = c_unset(line, ev);
+		c_check(res);
+	}
 	// else if (!ft_strncmp(line[CMD], "export", 7))
 	// 	c_export(line, ev);
 }
@@ -24,5 +39,6 @@ void	bild_in_check(char **line, char **ev)
 int	main(int ac, char **av, char **ev)
 {
 	(void)ac;
-	bild_in_check(av,ev);
+	// c_check(ev);
+	built_in_check(av, ev);
 }

@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 17:43:37 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/12 17:43:40 by nmasuda          ###   ########.fr       */
+/*   Created: 2025/10/12 18:08:09 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/12 19:13:45 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "../builtin.h"
 
-void	c_env(char **line, char **ev)
+void	c_check(char **check)
 {
 	int	i;
 
-	(void)line;
 	i = 0;
-	while (ev[i])
-	{
-		if (!ft_strncmp(ev[i], "_=", 2))
-		{
-			printf("_=/usr/bin/env\n");
-			break ;
-		}
-		else
-			printf("%s\n", ev[i++]);
-	}
+	while (check[i])
+		printf("%s\n", check[i++]);
 }

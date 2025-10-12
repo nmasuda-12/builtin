@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 17:43:37 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/12 17:43:40 by nmasuda          ###   ########.fr       */
+/*   Created: 2025/10/12 17:54:33 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/12 19:14:16 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "../builtin.h"
 
-void	c_env(char **line, char **ev)
+void	error(char *mess, char **line)
 {
 	int	i;
 
-	(void)line;
 	i = 0;
-	while (ev[i])
-	{
-		if (!ft_strncmp(ev[i], "_=", 2))
-		{
-			printf("_=/usr/bin/env\n");
-			break ;
-		}
-		else
-			printf("%s\n", ev[i++]);
-	}
+	if (line)
+		while (line[i])
+			free(line[i++]);
+	printf("%s\n", mess);
+	exit(2);
 }

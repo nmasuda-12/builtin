@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 17:43:37 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/12 17:43:40 by nmasuda          ###   ########.fr       */
+/*   Created: 2025/10/12 17:39:00 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/12 17:39:24 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "../builtin.h"
 
-void	c_env(char **line, char **ev)
+int	ft_strncmp(char *s1, const char *s2, size_t n)
 {
-	int	i;
-
-	(void)line;
-	i = 0;
-	while (ev[i])
+	while (n && *s1 == *s2)
 	{
-		if (!ft_strncmp(ev[i], "_=", 2))
-		{
-			printf("_=/usr/bin/env\n");
-			break ;
-		}
-		else
-			printf("%s\n", ev[i++]);
+		if (*s1 == '\0')
+			return (0);
+		(void)(n--, s1++, s2++);
 	}
+	if (n)
+		return ((unsigned char)*s1 - (unsigned char)*s2);
+	return (0);
 }

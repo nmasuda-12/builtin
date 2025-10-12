@@ -1,17 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   echo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/12 17:43:26 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/12 17:43:30 by nmasuda          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "builtin.h"
 
-static void echo_print(char **line)
+static void	echo_print(char **line)
 {
-    int i = CMD + 1;
-    while(line[i])
-    {
-        printf("%s",line[i++]);
-        if(line[i])
-            printf(" ");
-    }
+	int	i;
+
+	i = CMD + 1;
+	while (line[i])
+	{
+		printf("%s", line[i++]);
+		if (line[i])
+			printf(" ");
+	}
 }
 
-void c_echo(char **line)
+void	c_echo(char **line)
 {
 	if (!line[OPT])
 		printf("\n");

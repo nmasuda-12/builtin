@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 17:43:37 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/12 17:43:40 by nmasuda          ###   ########.fr       */
+/*   Created: 2025/10/12 17:50:30 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/12 18:05:37 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "../builtin.h"
 
-void	c_env(char **line, char **ev)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	const char	*head;
 
-	(void)line;
-	i = 0;
-	while (ev[i])
-	{
-		if (!ft_strncmp(ev[i], "_=", 2))
-		{
-			printf("_=/usr/bin/env\n");
-			break ;
-		}
-		else
-			printf("%s\n", ev[i++]);
-	}
+	head = str;
+	while (*str != '\0')
+		str++;
+	return (str - head);
 }

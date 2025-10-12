@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 17:43:37 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/12 17:43:40 by nmasuda          ###   ########.fr       */
+/*   Created: 2025/10/12 17:57:53 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/12 18:05:33 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin.h"
+#include "../builtin.h"
 
-void	c_env(char **line, char **ev)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	i;
+	char		*cd;
+	const char	*cs;
 
-	(void)line;
-	i = 0;
-	while (ev[i])
+	if (n == 0)
+		return (dest);
+	if (src == 0 && dest == 0)
+		return (NULL);
+	cd = (char *)dest;
+	cs = (const char *)src;
+	if (dest < src)
 	{
-		if (!ft_strncmp(ev[i], "_=", 2))
-		{
-			printf("_=/usr/bin/env\n");
-			break ;
-		}
-		else
-			printf("%s\n", ev[i++]);
+		while (n)
+			*cd++ = (n--, *cs++);
 	}
+	else
+	{
+		cd += n;
+		cs += n;
+		while (n)
+			*--cd = (n--, *--cs);
+	}
+	return (dest);
 }
