@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:46:10 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/13 18:19:58 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/13 18:34:09 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static bool	unset_arg_skip(char **line, char **ev, int j)
 	}
 	return (false);
 }
-
-
 
 char	**c_unset(char **line, char **ev)
 {
@@ -62,10 +60,9 @@ char	**c_unset(char **line, char **ev)
 		{
 			new_line = malloc(sizeof(char) * (ft_strlen("_=/usr/bin/env") + 1));
 			if (!new_line)
-			 	error("unset_newline_malloc_error", new_ev);
+				error("unset_newline_malloc_error", new_ev);
 			new_line = "_=/usr/bin/env";
 			new_ev[j - i] = new_line;
-			printf("%s\n",new_ev[j - i]);
 			j++;
 			break ;
 		}
@@ -76,12 +73,9 @@ char	**c_unset(char **line, char **ev)
 		new_ev[j - i] = new_line;
 		j++;
 	}
-	new_ev[j -i + 1] = "\0";
+	new_ev[j - i + 1] = "\0";
 	return (new_ev);
 }
-
-
-
 
 // char	**c_unset(char **line, char **ev)
 // {

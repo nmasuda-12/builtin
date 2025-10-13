@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 23:13:50 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/13 18:18:08 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/13 18:32:24 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	c_exit(char **line);
 //-----仮置系--------
 void	error(char *mess, char **line);
 void	c_check(char **check);
-void	c_free(char **line);
 
 //-----utils---------
 int		ft_strncmp(char *s1, const char *s2, size_t n);

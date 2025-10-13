@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:54:33 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/13 18:17:56 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/13 18:32:13 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,4 @@ void	error(char *mess, char **line)
 			free(line[i++]);
 	printf("%s\n", mess);
 	exit(2);
-}
-
-void	c_free(char **line)
-{
-	int	i;
-
-	i = 0;
-	if (line)
-		while (line[i])
-			free(line[i++]);
-	exit(1);
 }
