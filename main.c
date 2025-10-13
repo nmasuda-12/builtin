@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:46:38 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/13 18:59:32 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/13 20:03:07 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	built_in_check(char **line, char **ev)
 	else if (!ft_strncmp(line[CMD], "exit", 5))
 		c_exit(line);
 	else if (!ft_strncmp(line[CMD], "unset", 6))
-	{
 		res = c_unset(line, ev);
+	else if (!ft_strncmp(line[CMD], "export", 7))
+	{
+		res = c_export(line, ev);
 		c_check(res);
 	}
-	else if (!ft_strncmp(line[CMD], "export", 7))
-		c_export(line, ev);
 }
 
 int	main(int ac, char **av, char **ev)
