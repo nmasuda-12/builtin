@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:46:10 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/13 18:38:48 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/13 19:59:07 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	**c_unset(char **line, char **ev)
 	int		j;
 	int		i;
 
+	new_ev = NULL;
+	new_line = NULL;
 	i = 0;
 	j = 0;
 	while (ev[j])
@@ -57,23 +59,14 @@ char	**c_unset(char **line, char **ev)
 				break ;
 		}
 		if (!ft_strncmp(ev[j], "_=", 2))
-		{
-			new_line = malloc(sizeof(char) * (ft_strlen("_=/usr/bin/env") + 1));
-			if (!new_line)
-				error("unset_newline_malloc_error", new_ev);
-			new_line = "_=/usr/bin/env";
-			new_ev[j - i] = new_line;
-			j++;
 			break ;
-		}
-		new_line = malloc(sizeof(char) * (ft_strlen(ev[j]) + 1));
+		new_line = ft_strdup(ev[j]);
 		if (!new_line)
 			error("unset_newline_malloc_error", new_ev);
-		ft_memmove(new_line, ev[j], ft_strlen(ev[j]));
 		new_ev[j - i] = new_line;
 		j++;
 	}
-	new_ev[j - i + 1] = "\0";
+	new_ev[j - i] = NULL;
 	return (new_ev);
 }
 

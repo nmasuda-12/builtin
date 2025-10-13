@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 17:57:53 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/12 18:05:33 by nmasuda          ###   ########.fr       */
+/*   Created: 2025/10/13 19:57:48 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/13 19:59:21 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtin.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strdup(const char *s)
 {
-	char		*cd;
-	const char	*cs;
+	char	*mal;
+	char	*res;
 
-	if (n == 0)
-		return (dest);
-	if (src == 0 && dest == 0)
+	mal = (char *)malloc(ft_strlen(s) + 1);
+	if (!mal)
 		return (NULL);
-	cd = (char *)dest;
-	cs = (const char *)src;
-	if (dest < src)
-	{
-		while (n)
-			*cd++ = (n--, *cs++);
-	}
-	else
-	{
-		cd += n;
-		cs += n;
-		while (n)
-			*--cd = (n--, *--cs);
-	}
-	return (dest);
+	res = mal;
+	while (*s)
+		*mal++ = *s++;
+	*mal = '\0';
+	return (res);
 }

@@ -8,12 +8,13 @@ MAIN_SRCS = echo.c \
 	   		env.c \
 			unset.c \
 			exit.c \
+			export.c \
 	   		main.c
 
 UTIL_SRCS = utils/ft_atoi.c \
 			utils/ft_strncmp.c \
 			utils/ft_strlen.c \
-			utils/ft_memmove.c \
+			utils/ft_strdup.c \
 			utils/check.c \
 			utils/error.c
 
