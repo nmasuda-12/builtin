@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:43:46 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/14 14:34:51 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/14 17:31:19 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**c_export(char **line, char **ev)
 		j++;
 	new_ev = malloc(sizeof(char *) * (j + i + 1));
 	if (!new_ev)
-		error("export_newev_malloc_error", NULL);
+		error(NULL,"export_newev_malloc_error", NULL,2);
 	j = 0;
 	// while (ev[j])
 	// {
@@ -72,7 +72,7 @@ char	**c_export(char **line, char **ev)
 	// 	}
 	// 	new_ev[j] = ft_strjoin("declare -x ", ev[j]);
 	// 	if (!new_ev[j])
-	// 		error("export_ft_strjoin_malloc_error", new_ev);
+	// 		error(NULL,"export_ft_strjoin_malloc_error", new_ev,2);
 	// 	j++;
 	// }→ココを一つの関数にする
 
@@ -83,7 +83,7 @@ char	**c_export(char **line, char **ev)
 	// 	{
 	// 		new_line = ft_strdup(line[CMD + i]);
 	// 		if (!new_line)
-	// 			error("export_ft_strfup_malloc_error", new_ev);
+	// 			error(NULL,"export_ft_strfup_malloc_error", new_ev,2);
 	// 		if (ft_strncmp(new_line, "declare -x _=", 13))
 	// 			new_ev[j + i] = new_line;
 	// 		i++;

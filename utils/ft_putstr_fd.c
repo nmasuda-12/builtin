@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 17:54:33 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/14 19:06:25 by nmasuda          ###   ########.fr       */
+/*   Created: 2025/10/14 15:27:39 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/14 15:27:54 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtin.h"
 
-void	error(char *bash, char *mess, char **line, int exit_num)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (line)
-		while (line[i])
-			free(line[i++]);
-	if (bash)
-		ft_putstr_fd(bash,exit_num);
-	ft_putstr_fd(mess, exit_num);
+	while (*s)
+		write(fd, s++, 1);
 }

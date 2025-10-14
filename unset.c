@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:46:10 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/13 19:59:07 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/14 17:30:51 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**c_unset(char **line, char **ev)
 	}
 	new_ev = malloc(sizeof(char *) * (j - i + 1));
 	if (!new_ev)
-		error("unset_newev_malloc_error", NULL);
+		error(NULL,"unset_newev_malloc_error", NULL,2);
 	i = 0;
 	j = 0;
 	while (ev[j])
@@ -62,7 +62,7 @@ char	**c_unset(char **line, char **ev)
 			break ;
 		new_line = ft_strdup(ev[j]);
 		if (!new_line)
-			error("unset_newline_malloc_error", new_ev);
+			error(NULL,"unset_newline_malloc_error", new_ev,2);
 		new_ev[j - i] = new_line;
 		j++;
 	}

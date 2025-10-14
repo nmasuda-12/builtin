@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:46:38 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/13 20:03:07 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/14 19:22:40 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ void	built_in_check(char **line, char **ev)
 		c_pwd(line);
 	else if (!ft_strncmp(line[CMD], "env", 4))
 		c_env(line, ev);
-	// else if (!ft_strncmp(line[CMD], "cd", 3))
-	// 	c_cd(line);
+	else if (!ft_strncmp(line[CMD], "cd", 3))
+	{
+		res = c_cd(line, ev);
+		c_check(res);
+	}
 	else if (!ft_strncmp(line[CMD], "exit", 5))
 		c_exit(line);
 	else if (!ft_strncmp(line[CMD], "unset", 6))
@@ -39,6 +42,5 @@ void	built_in_check(char **line, char **ev)
 int	main(int ac, char **av, char **ev)
 {
 	(void)ac;
-	// c_check(ev);
 	built_in_check(av, ev);
 }
