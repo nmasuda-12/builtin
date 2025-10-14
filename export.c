@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:43:46 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/14 14:32:12 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/14 14:34:51 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,32 +62,34 @@ char	**c_export(char **line, char **ev)
 	if (!new_ev)
 		error("export_newev_malloc_error", NULL);
 	j = 0;
-	while (ev[j])
-	{
-		if (!ft_strncmp(ev[j], "_=", 2))
-		{
-			j++;
-			if (!ev[j])
-				break ;
-		}
-		new_ev[j] = ft_strjoin("declare -x ", ev[j]);
-		if (!new_ev[j])
-			error("export_ft_strjoin_malloc_error", new_ev);
-		j++;
-	}
-	if (i != 0)
-	{
-		i = 1;
-		while (line[CMD + i])
-		{
-			new_line = ft_strdup(line[CMD + i]);
-			if (!new_line)
-				error("export_ft_strfup_malloc_error", new_ev);
-			if (ft_strncmp(new_line, "declare -x _=", 13))
-				new_ev[j + i] = new_line;
-			i++;
-		}
-	}
+	// while (ev[j])
+	// {
+	// 	if (!ft_strncmp(ev[j], "_=", 2))
+	// 	{
+	// 		j++;
+	// 		if (!ev[j])
+	// 			break ;
+	// 	}
+	// 	new_ev[j] = ft_strjoin("declare -x ", ev[j]);
+	// 	if (!new_ev[j])
+	// 		error("export_ft_strjoin_malloc_error", new_ev);
+	// 	j++;
+	// }→ココを一つの関数にする
+
+	// if (i != 0)
+	// {
+	// 	i = 1;
+	// 	while (line[CMD + i])
+	// 	{
+	// 		new_line = ft_strdup(line[CMD + i]);
+	// 		if (!new_line)
+	// 			error("export_ft_strfup_malloc_error", new_ev);
+	// 		if (ft_strncmp(new_line, "declare -x _=", 13))
+	// 			new_ev[j + i] = new_line;
+	// 		i++;
+	// 	}
+	// }→ココを一つの関数にする２
+
 	new_ev[j + i] = NULL;
 	new_ev = sort(new_ev);
 	return (new_ev);
