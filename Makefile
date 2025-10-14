@@ -12,9 +12,11 @@ MAIN_SRCS = echo.c \
 	   		main.c
 
 UTIL_SRCS = utils/ft_atoi.c \
+			utils/ft_memcmp.c \
 			utils/ft_strncmp.c \
 			utils/ft_strlen.c \
 			utils/ft_strdup.c \
+			utils/ft_strjoin.c \
 			utils/check.c \
 			utils/error.c
 

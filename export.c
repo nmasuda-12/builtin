@@ -6,11 +6,42 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:43:46 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/13 20:15:26 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/14 14:32:12 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
+
+static char	**chenge(char **new_ev, int i, int j)
+{
+	char	*tmp;
+
+	tmp = new_ev[j];
+	new_ev[j] = new_ev[i];
+	new_ev[i] = tmp;
+	return (new_ev);
+}
+
+static char	**sort(char **new_ev)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = i + 1;
+	while (new_ev[j] != NULL)
+	{
+		if (ft_memcmp(new_ev[i], new_ev[j]) > 0)
+		{
+			new_ev = chenge(new_ev, i, j);
+			i = 0;
+			j = i + 1;
+		}
+		else
+			(void)(i++, j++);
+	}
+	return (new_ev);
+}
 
 char	**c_export(char **line, char **ev)
 {
@@ -33,7 +64,15 @@ char	**c_export(char **line, char **ev)
 	j = 0;
 	while (ev[j])
 	{
-		new_ev[j] = ev[j];
+		if (!ft_strncmp(ev[j], "_=", 2))
+		{
+			j++;
+			if (!ev[j])
+				break ;
+		}
+		new_ev[j] = ft_strjoin("declare -x ", ev[j]);
+		if (!new_ev[j])
+			error("export_ft_strjoin_malloc_error", new_ev);
 		j++;
 	}
 	if (i != 0)
@@ -42,10 +81,18 @@ char	**c_export(char **line, char **ev)
 		while (line[CMD + i])
 		{
 			new_line = ft_strdup(line[CMD + i]);
-			new_ev[j + i] = new_line;
+			if (!new_line)
+				error("export_ft_strfup_malloc_error", new_ev);
+			if (ft_strncmp(new_line, "declare -x _=", 13))
+				new_ev[j + i] = new_line;
 			i++;
 		}
 	}
 	new_ev[j + i] = NULL;
+	new_ev = sort(new_ev);
 	return (new_ev);
 }
+
+/*
+normなおす
+*/
