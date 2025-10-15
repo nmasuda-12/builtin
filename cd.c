@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:36:30 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/15 18:53:50 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/15 19:34:48 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,29 @@ char	**c_cd(char **line, char **ev)
 {
 	int	i;
 
+	int abflag = 0;
 	i = 0;
+	char **res;
+	res = NULL;
 	if (line[CMD + 2] != NULL)
 		error(line[0], ": cd: too many arguments", NULL, 1);
 	if (!ft_strncmp(line[CMD + 1], "/", 2) || !ft_strncmp(line[CMD + 1], "//",
 			3))
 		return (change_pwd(line[CMD + 1], ev));
+		
+	if(line[CMD + 1][0] == "/")
+		abflag++;
+	res = ft_split(line[CMD +1],"/");
 
-	// if (!line[CMD + 1])
-	// {
-	// 	while (line[CMD + 1])
-	// 	{
-	// 	}
-	// }
-	// printf("%s\n", getenv("PWD"));
-	return (NULL);
+
+
+
+		
+	if (!line[CMD + 1])
+		res = ft_split(line[CMD + 1],"/");
+	while(*res[i])
+	{
+		if(res[i])
+	}
+	return (change_pwd(line[CMD + 1], ev));
 }

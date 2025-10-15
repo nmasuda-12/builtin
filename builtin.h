@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 23:13:50 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/15 18:48:45 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/15 19:02:06 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ int		ft_memcmp(const void *s1, const void *s2);
 char	*ft_export_strjoin(char const *s1, char const *s2);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putstr_fd(char *s, int fd);
+char	**ft_split(char const *s, char c);
 
 #endif
