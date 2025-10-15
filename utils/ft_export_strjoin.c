@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/12 17:54:33 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/15 18:20:48 by nmasuda          ###   ########.fr       */
+/*   Created: 2025/10/14 13:50:13 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/15 18:47:58 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtin.h"
 
-void	error(char *bash, char *mess, char **line, int exit_num)
+char	*ft_export_strjoin(char const *s1, char const *s2)
 {
-	int	i;
+	char	*box;
+	char	*ret;
+	int		first;
 
-	i = 0;
-	if (line)
-		while (line[i])
-			free(line[i++]);
-	if (bash)
-		ft_putstr_fd(bash, exit_num);
-	if (mess)
-		ft_putstr_fd(mess, exit_num);
-	exit(exit_num);
+	first = 1;
+	box = malloc(ft_strlen(s1) + ft_strlen(s2) + 3);
+	if (!box)
+		return (NULL);
+	ret = box;
+	while (*s1)
+		*box++ = *s1++;
+	while (*s2)
+	{
+		*box++ = *s2++;
+		if (*s2 == '=' && first == 1)
+		{
+			*box++ = *s2++;
+			*box++ = '"';
+			first = 0;
+		}
+	}
+	*box++ = '"';
+	*box++ = '\0';
+	return (ret);
 }

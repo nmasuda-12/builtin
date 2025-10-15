@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 23:13:50 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/14 19:07:08 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/15 18:48:45 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**c_cd(char **line, char **ev);
 
 //-----仮置系--------
 void	error(char *bash, char *mess, char **line, int exit_num);
-void	c_check(char **check);
+void	c_check(char *bash,char **check);
 
 //-----utils---------
 int		ft_strncmp(char *s1, const char *s2, size_t n);
@@ -47,6 +47,7 @@ size_t	ft_strlen(const char *str);
 bool	ft_atoi(char *st);
 char	*ft_strdup(const char *s);
 int		ft_memcmp(const void *s1, const void *s2);
+char	*ft_export_strjoin(char const *s1, char const *s2);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putstr_fd(char *s, int fd);
 

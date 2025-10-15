@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:43:46 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/14 17:31:19 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/15 18:52:18 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,11 @@ char	**c_export(char **line, char **ev)
 	// 		if (!ev[j])
 	// 			break ;
 	// 	}
-	// 	new_ev[j] = ft_strjoin("declare -x ", ev[j]);
+	// 	new_ev[j] = ft_export_strjoin("declare -x ", ev[j]);
 	// 	if (!new_ev[j])
 	// 		error(NULL,"export_ft_strjoin_malloc_error", new_ev,2);
 	// 	j++;
+	// }
 	// }→ココを一つの関数にする
 
 	// if (i != 0)
@@ -88,6 +89,7 @@ char	**c_export(char **line, char **ev)
 	// 			new_ev[j + i] = new_line;
 	// 		i++;
 	// 	}
+	// }
 	// }→ココを一つの関数にする２
 
 	new_ev[j + i] = NULL;

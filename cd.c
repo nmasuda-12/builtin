@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:36:30 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/14 19:25:02 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/15 18:53:50 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static char	**change_pwd(char *line, char **ev)
 	int		i;
 	char	**new_ev;
 
+	new_ev = NULL;
 	i = 0;
 	while (ev[i])
 		i++;
@@ -26,13 +27,14 @@ static char	**change_pwd(char *line, char **ev)
 	i = 0;
 	while (ev[i])
 	{
-		ev[i] = ft_strdup(new_ev[i]);
-		if (!ev[i])
+		new_ev[i] = ft_strdup(ev[i]);
+		if (!new_ev[i])
 			return (NULL);
 		if (!ft_strncmp(new_ev[i], "PWD", 3))
-			new_ev[i] = line;
+			new_ev[i] = ft_strjoin("PWD=", line);
 		i++;
 	}
+	new_ev[i] = NULL;
 	return (new_ev);
 }
 
@@ -46,6 +48,7 @@ char	**c_cd(char **line, char **ev)
 	if (!ft_strncmp(line[CMD + 1], "/", 2) || !ft_strncmp(line[CMD + 1], "//",
 			3))
 		return (change_pwd(line[CMD + 1], ev));
+
 	// if (!line[CMD + 1])
 	// {
 	// 	while (line[CMD + 1])
@@ -53,8 +56,5 @@ char	**c_cd(char **line, char **ev)
 	// 	}
 	// }
 	// printf("%s\n", getenv("PWD"));
+	return (NULL);
 }
-
-/*
-なぜか引数の数が合わない　引数がcmd +1つなのにtoo manyって言われる
-*/
