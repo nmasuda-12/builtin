@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:46:38 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/16 21:14:57 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/16 21:57:28 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	built_in_check(char **line, char **ev)
 	else if (!ft_strncmp(line[CMD], "export", 7))
 	{
 		res = c_export(line, ev);
-		c_check(line[0], res);
+		// c_check(line[0], res);
 	}
 }
 
