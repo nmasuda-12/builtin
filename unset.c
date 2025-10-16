@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:46:10 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/14 17:30:51 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/16 21:21:20 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,42 @@ static bool	unset_arg_skip(char **line, char **ev, int j)
 	return (false);
 }
 
+char	**input_new_ev(char **line, char **ev, char **new_ev)
+{
+	int		i;
+	int		j;
+	char	*new_line;
+
+	i = 0;
+	j = 0;
+	new_line = NULL;
+	while (ev[j])
+	{
+		if (unset_arg_skip(line, ev, j) == true)
+		{
+			(void)(j++, i++);
+			if (!ev[j])
+				break ;
+		}
+		if (!ft_strncmp(ev[j], "_=", 2))
+			break ;
+		new_line = ft_strdup(ev[j]);
+		if (!new_line)
+			error(NULL, "unset_newline_malloc_error", new_ev, 2);
+		new_ev[j - i] = new_line;
+		j++;
+	}
+	new_ev[j - i] = NULL;
+	return (new_ev);
+}
+
 char	**c_unset(char **line, char **ev)
 {
 	char	**new_ev;
-	char	*new_line;
 	int		j;
 	int		i;
 
 	new_ev = NULL;
-	new_line = NULL;
 	i = 0;
 	j = 0;
 	while (ev[j])
@@ -46,30 +73,6 @@ char	**c_unset(char **line, char **ev)
 	}
 	new_ev = malloc(sizeof(char *) * (j - i + 1));
 	if (!new_ev)
-		error(NULL,"unset_newev_malloc_error", NULL,2);
-	i = 0;
-	j = 0;
-	while (ev[j])
-	{
-		if (unset_arg_skip(line, ev, j) == true)
-		{
-			j++;
-			i++;
-			if (!ev[j])
-				break ;
-		}
-		if (!ft_strncmp(ev[j], "_=", 2))
-			break ;
-		new_line = ft_strdup(ev[j]);
-		if (!new_line)
-			error(NULL,"unset_newline_malloc_error", new_ev,2);
-		new_ev[j - i] = new_line;
-		j++;
-	}
-	new_ev[j - i] = NULL;
-	return (new_ev);
+		error(NULL, "unset_newev_malloc_error", NULL, 2);
+	return (input_new_ev(line, ev, new_ev));
 }
-
-/*
-ノーム直す
-*/

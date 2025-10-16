@@ -6,13 +6,11 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 17:52:58 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/14 18:13:15 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/16 21:13:04 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtin.h"
-#include <stdint.h>
-#include <stdlib.h>
 
 static void	*ft_memset(void *s, int c, size_t n)
 {
@@ -45,17 +43,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	box = ft_memset(box, '\0', all_size);
 	return (box);
-}
-
-
-static void	ft_free_all(char **res)
-{
-	int	i;
-
-	i = 0;
-	while (res[i])
-		free(res[i++]);
-	free(res);
 }
 
 static size_t	ft_count_words(const char *s, char c)
@@ -111,7 +98,7 @@ char	**ft_split(char const *s, char c)
 			len++;
 		res[i] = ft_strndup(s, len);
 		if (!res[i])
-			return (ft_free_all(res), NULL);
+			return (free_all(res), NULL);
 		s += (i++, len);
 	}
 	return (res);

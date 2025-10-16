@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 23:13:50 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/16 20:46:00 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/16 21:13:19 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <stddef.h>
+# include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -40,6 +41,7 @@ char		**c_cd(char **line, char **ev);
 //-----仮置系--------
 void		error(char *bash, char *mess, char **line, int exit_num);
 void		c_check(char *bash, char **check);
+void		free_all(char **res);
 
 //-----utils---------
 int			ft_strncmp(char *s1, const char *s2, size_t n);

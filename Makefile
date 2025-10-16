@@ -21,7 +21,8 @@ UTIL_SRCS = utils/ft_atoi.c \
 			utils/ft_strjoin.c \
 			utils/ft_export_strjoin.c \
 			utils/check.c \
-			utils/error.c
+			utils/error.c \
+			utils/free_all.c
 
 SRCS = $(MAIN_SRCS) $(UTIL_SRCS)
 
