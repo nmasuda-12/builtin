@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:43:46 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/16 20:40:10 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/16 20:54:19 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	c_exit(char **line)
 		echo_exit(line, 2, line[CMD + 1], 0);
 	while (num < 0)
 		num += 256;
-	while (!(0 <= num && num <= 255))
-		num = num - 256;
+	num = num % 256;
 	echo_exit(line, num, NULL, 0);
 }

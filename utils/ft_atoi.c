@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:39:12 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/16 20:31:21 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/16 20:55:01 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,11 @@ long long	ft_atoi(char *st, int *error)
 	while ('0' <= *st && *st <= '9')
 	{
 		if (ft_overflow(res, st, neg) == false)
-		{
-			*error = 1;
-			return (0);
-		}
+			return (*error = 1);
 		res = res * 10 + (*st - '0');
 		st++;
 	}
 	if (!('0' <= *st && *st <= '9' || *st == '\0'))
-	{
-		*error = 1;
-		return (0);
-	}
+		return (*error = 1);
 	return (neg * res);
 }
