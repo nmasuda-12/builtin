@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 21:11:48 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/16 21:12:08 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/17 21:09:50 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	free_all(char **res)
 
 	i = 0;
 	while (res[i])
-		free(res[i++]);
+	{
+		free(res[i]);
+		i++;
+	}
 	free(res);
 }

@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:43:46 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/17 16:32:01 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/17 21:37:26 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	**sort(char **new_ev)
 
 static char	**ev_add_to_new_ev(char **ev, char **new_ev)
 {
-	int		j;
+	int	j;
 
 	j = 0;
 	while (ev[j])
@@ -61,7 +61,7 @@ static char	**ev_add_to_new_ev(char **ev, char **new_ev)
 		}
 		new_ev[j] = ft_export_strjoin("declare -x ", ev[j]);
 		if (!new_ev[j])
-			error(NULL, "export_ft_strjoin_malloc_error", new_ev, 2);
+			error(NULL, "export_ft_strjoin_malloc_error\n", new_ev, 2);
 		j++;
 	}
 	j--;
@@ -77,10 +77,10 @@ static char	**arg_add_to_ev(char **line, char **new_ev, int j)
 	new_line = NULL;
 	while (line[CMD + i])
 	{
-		new_line = ft_export_strjoin("declare -x ", line[CMD+i]);
+		new_line = ft_export_strjoin("declare -x ", line[CMD + i]);
 		if (!new_line)
-			error(NULL, "export_ft_strjoin_malloc_error", new_ev, 2);
-		new_ev[j + i -1] = new_line;
+			error(NULL, "export_ft_strjoin_malloc_error\n", new_ev, 2);
+		new_ev[j + i - 1] = new_line;
 		i++;
 	}
 	return (new_ev);
@@ -97,13 +97,13 @@ char	**c_export(char **line, char **ev)
 	new_line = NULL;
 	i = 0;
 	j = 0;
-	while (line[CMD + i +1])
+	while (line[CMD + i + 1])
 		i++;
 	while (ev[j])
 		j++;
 	new_ev = malloc(sizeof(char *) * (j + i));
 	if (!new_ev)
-		error(NULL, "export_newev_malloc_error", NULL, 2);
+		error(NULL, "export_newev_malloc_error\n", NULL, 2);
 	j--;
 	new_ev[j + i] = NULL;
 	new_ev = ev_add_to_new_ev(ev, new_ev);

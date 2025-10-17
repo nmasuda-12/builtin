@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:46:38 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/17 16:52:01 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/17 21:37:45 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ int	main(int ac, char **av, char **ev)
 {
 	(void)ac;
 	built_in_check(av, ev);
-	return 0;
+	return (0);
 }

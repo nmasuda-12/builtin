@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 18:08:09 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/17 16:15:51 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/17 21:23:15 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	c_check(char *bash, char **check)
 		error(bash, NULL, NULL, 0);
 	while (check[i])
 	{
-		printf("%s\n",check[i]);
+		printf("%s\n", check[i]);
 		i++;
 	}
 }

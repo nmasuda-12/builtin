@@ -6,12 +6,12 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 23:13:50 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/16 21:13:19 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/17 21:39:43 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _BUILTIN_H_
-# define _BUILTIN_H_
+#ifndef BUILTIN_H
+# define BUILTIN_H
 
 # define CMD 1
 # define OPT 2
