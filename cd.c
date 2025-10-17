@@ -5,63 +5,66 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 14:36:30 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/16 20:52:40 by nmasuda          ###   ########.fr       */
+/*   Created: 2025/10/17 17:14:57 by nmasuda           #+#    #+#             */
+/*   Updated: 2025/10/17 19:18:30 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static char	**change_pwd(char *line, char **ev)
+char	**change_pwd(char *old_pwd, char *new_pwd, char **ev)
 {
-	int		i;
 	char	**new_ev;
+	int		i;
 
 	new_ev = NULL;
 	i = 0;
 	while (ev[i])
 		i++;
 	new_ev = malloc(sizeof(char *) * i);
+	new_ev[i - 1] = NULL;
 	if (!new_ev)
-		return (NULL);
+		error();
 	i = 0;
-	while (ev[i])
+	while (new_ev[i])
 	{
-		new_ev[i] = ft_strdup(ev[i]);
-		if (!new_ev[i])
-			return (NULL);
 		if (!ft_strncmp(new_ev[i], "PWD", 3))
-			new_ev[i] = ft_strjoin("PWD=", line);
+			new_ev[i] = ft_strdup(old_pwd);
+		else if (!ft_strncmp(new_ev[i], "OLDPWD", 6))
+			new_ev[i] = ft_strdup(new_pwd);
+		else
+			new_ev[i] = ft_strdup(ev[i]);
+		if (!new_ev[i])
+			error();
 		i++;
 	}
-	new_ev[i] = NULL;
 	return (new_ev);
 }
 
-char	**c_cd(char **line, char **ev)
+char	**cd_c(char **line, char **ev)
 {
-	(void) line;
-	(void) ev;
-	return NULL;
-	// int	i;
+	char	*chpath;
+	char	*old_pwd;
+	char	*new_pwd;
 
-	// int abflag = 0;
-	// i = 0;
-	// char **res;
-	// res = NULL;
-	// if (line[CMD + 2] != NULL)
-	// 	error(line[0], ": cd: too many arguments", NULL, 1);
-	// if (!ft_strncmp(line[CMD + 1], "/", 2) || !ft_strncmp(line[CMD + 1], "//",
-	// 		3))
-	// 	return (change_pwd(line[CMD + 1], ev));
-		
-	// if(line[CMD + 1][0] == "/")
-	// 	abflag++;
-	// res = ft_split(line[CMD +1],"/");
-
-	// while(*res[i])
-	// {
-	// 	if(res[i])
-	// }
-	// return (change_pwd(line[CMD + 1], ev));
+	old_pwd = NULL;
+	new_pwd = NULL;
+	if (line[CMD + 2])
+		error(line[0], ": cd: too many arguments", NULL, 1);
+	if (line[CMD + 1] == NULL || line[CMD + 2] == '~')
+		chpath = getenv("HOME");
+	else
+		chpath = line[CMD + 1];
+	old_pwd = getpwd(NULL, 0);
+	if (!old_pwd)
+		error();
+	if (chdir(chpath) == -1)
+	{
+		free(old_pwd);
+		error();
+	}
+	new_pwd = getpwd(NULL, 0);
+	if (!new_pwd)
+		error();
+	return (free(old_pwd), free(new_pwd), change_pwd(old_pwd, new_pwd, ev));
 }
