@@ -65,4 +65,4 @@ DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/101441/bus
 LC_NUMERIC=ja_JP.UTF-8
 OLDPWD=/home/nmasuda/clone
 TERM_PROGRAM=vscode
-_=/usr/bin/env
+_=./built

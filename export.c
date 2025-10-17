@@ -6,7 +6,7 @@
 /*   By: nmasuda <nmasuda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:43:46 by nmasuda           #+#    #+#             */
-/*   Updated: 2025/10/16 22:20:00 by nmasuda          ###   ########.fr       */
+/*   Updated: 2025/10/17 16:32:01 by nmasuda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,9 @@ static char	**ev_add_to_new_ev(char **ev, char **new_ev)
 		new_ev[j] = ft_export_strjoin("declare -x ", ev[j]);
 		if (!new_ev[j])
 			error(NULL, "export_ft_strjoin_malloc_error", new_ev, 2);
-		printf("j :%d , %s \n",j, new_ev[j]);
 		j++;
 	}
 	j--;
-	printf("add j :%d\n",j);
 	return (new_ev);
 }
 
@@ -76,28 +74,15 @@ static char	**arg_add_to_ev(char **line, char **new_ev, int j)
 	char	*new_line;
 
 	i = 1;
-	printf("arg j:%d\n",j);
 	new_line = NULL;
 	while (line[CMD + i])
 	{
-		// printf("aaaaaaaaaaaaaaaa\n");
-		new_line = ft_strdup(line[CMD + i]);
+		new_line = ft_export_strjoin("declare -x ", line[CMD+i]);
 		if (!new_line)
-			error(NULL, "export_ft_strfup_malloc_error", new_ev, 2);
-		if (ft_strncmp(new_line, "declare -x _=", 13))
-		{
-			// printf("1:%s\n",new_ev[1]);
-			// printf("j:%s\n",new_ev[j-1]);
-			// printf("j+i-1:%s\n",new_ev[j+ i-1]);
-			// printf("j+i:%s\n",new_ev[j+ i]);
-			new_ev[j + i] = new_line;
-		}
-		// printf("j+i-1:%s\n",new_ev[j+ i-1]);
-		// printf("j+i:%s\n",new_ev[j+ i]);
-		// printf("j+i+1:%s\n",new_ev[j+ i+1]);
+			error(NULL, "export_ft_strjoin_malloc_error", new_ev, 2);
+		new_ev[j + i -1] = new_line;
 		i++;
 	}
-	// printf("aaaaaaaaaaaaaaaa\n");
 	return (new_ev);
 }
 
@@ -112,28 +97,19 @@ char	**c_export(char **line, char **ev)
 	new_line = NULL;
 	i = 0;
 	j = 0;
-	while (line[CMD + i])
+	while (line[CMD + i +1])
 		i++;
 	while (ev[j])
 		j++;
-	printf("firtst:%d\n",j);
-	printf("firtst:%d\n",i);
 	new_ev = malloc(sizeof(char *) * (j + i));
 	if (!new_ev)
 		error(NULL, "export_newev_malloc_error", NULL, 2);
+	j--;
+	new_ev[j + i] = NULL;
 	new_ev = ev_add_to_new_ev(ev, new_ev);
-	new_ev = NULL;
-	// if (i != 0)
-	// 	new_ev = arg_add_to_ev(line, new_ev, j);
-	// new_ev[j + i] = NULL;
-	// new_ev = sort(new_ev);
+	new_ev = sort(new_ev);
+	if (i != 0)
+		new_ev = arg_add_to_ev(line, new_ev, j);
+	new_ev = sort(new_ev);
 	return (new_ev);
 }
-
-/*
-実際envは69行あって。
-exportは68行あって。
-_=がないところまでは大丈夫なんだけど
-evを見ていったときに数がなんか合わない
-ev_add_to_new_evのところの数がおかしい、あとマロックの数をどうするのか考える
-*/
