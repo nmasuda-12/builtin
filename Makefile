@@ -3,14 +3,14 @@ NAME = built
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-MAIN_SRCS = echo.c \
-	   		pwd.c \
-	   		env.c \
-			unset.c \
-			exit.c \
-			export.c \
-			cd.c \
-	   		main.c
+MAIN_SRCS = srcs/echo.c \
+	   		srcs/pwd.c \
+	   		srcs/env.c \
+			srcs/unset.c \
+			srcs/exit.c \
+			srcs/export.c \
+			srcs/cd.c \
+	   		srcs/main.c
 
 UTIL_SRCS = utils/ft_atoi.c \
 			utils/ft_memcmp.c \
