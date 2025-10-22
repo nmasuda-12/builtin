@@ -10,10 +10,11 @@ MAIN_SRCS = ../srcs/echo.c \
 			../srcs/exit.c \
 			../srcs/export.c \
 			../srcs/cd.c \
-	   		../srcs/main.c
+	   		../srcs/main.c \
 
 UTIL_SRCS = ../utils/ft_atoi.c \
 			../utils/ft_memcmp.c \
+			../utils/ft_memcpy.c \
 			../utils/ft_putstr_fd.c \
 			../utils/ft_strncmp.c \
 			../utils/ft_strlen.c \

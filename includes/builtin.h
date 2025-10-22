@@ -26,6 +26,16 @@
 # include <string.h>
 # include <unistd.h>
 
+typedef struct s_pwd
+{
+	char	**ev;
+	char	**new_ev;
+	char	*new_pwd;
+	char	*old_pwd;
+	int		f_new_pwd;
+	int		f_old_pwd;
+}			t_pwd;
+
 //-----main---------
 void		built_in_check(char **line, char **ev);
 
@@ -53,5 +63,6 @@ char		*ft_export_strjoin(char const *s1, char const *s2);
 char		*ft_strjoin(char const *s1, char const *s2);
 void		ft_putstr_fd(char *s, int fd);
 char		**ft_split(char const *s, char c);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif
